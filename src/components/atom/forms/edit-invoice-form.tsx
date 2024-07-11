@@ -55,7 +55,7 @@ const EditInvoiceForm = ({ className }: Props) => {
 
 	return (
 		<div className="grid lg:grid-cols-12 gap-5 w-full mt-4">
-			<div className="col-span-9 w-full">
+			<div className="col-span-9 xl:col-span-8 w-full">
 				<div className={clsx("rounded-xl bg-white p-5", className)}>
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="w-full grid grid-cols-12 gap-3">
@@ -199,7 +199,7 @@ const EditInvoiceForm = ({ className }: Props) => {
 					</Form>
 				</div>
 			</div>
-			<div className="bg-white col-span-3 min-h-24 w-full rounded-xl p-4"></div>
+			<div className="bg-white col-span-3 xl:col-span-4 min-h-24 w-full rounded-xl p-4"></div>
 		</div>
 	);
 };

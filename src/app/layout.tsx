@@ -19,12 +19,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<AppProviders>
-				<body className={font.className}>
+				<body className={clsx(font.className, "bg-[#111]")}>
 					<NextTopLoader />
 					<Toaster />
-					<main className="bg-_background p-2 sm:flex items-start gap-5 w-full">
-						<Sidebar />
-						<section className="w-full py-3 overflow-x-hidden min-h-screen">{children}</section>
+					<main className="bg-_background p-2 mx-auto max-w-[90rem]">
+						<div className="sm:flex items-start gap-5 w-full">
+							<Sidebar />
+							<section className="w-full py-3 overflow-x-hidden min-h-screen">{children}</section>
+						</div>
 					</main>
 				</body>
 			</AppProviders>
