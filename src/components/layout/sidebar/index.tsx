@@ -40,22 +40,24 @@ const Sidebar = () => {
 
 	return (
 		<>
-			<div className="sm:hidden flex justify-between items-center py-4">
-				<div className="flex gap-1 items-center text-_primary relative">
-					<FileBarChart2 />
-					<p className="uppercase text-xl tracking-tight" style={{ fontFamily: "monospace" }}>
-						Invoice Master
-					</p>
-				</div>
+			<div className="sm:hidden flex justify-between items-center py-4 sticky top-0 bg-_background z-40">
+				<Link href="/">
+					<div className="flex gap-1 items-center text-_primary relative">
+						<FileBarChart2 />
+						<p className="uppercase text-xl tracking-tight" style={{ fontFamily: "monospace" }}>
+							Invoice Master
+						</p>
+					</div>
+				</Link>
 				<Menu onClick={toggleSidebar} className="cursor-pointer" size={24} />
 			</div>
 			{isOpen && (
-				<div onClick={closeSidebar} className="bg-black/20 fixed left-0 top-0 h-full w-full sm:hidden" />
+				<div onClick={closeSidebar} className="z-50 bg-black/20 fixed left-0 top-0 h-full w-full sm:hidden" />
 			)}
 			<div
 				className={clsx(
 					isOpen ? "w-[65%] translate-x-0" : "w-0 sm:w-full sm:translate-x-0 -translate-x-[100vw]",
-					"sm:sticky left-0 fixed sm:max-w-[6em] lg:max-w-[15em] sm:h-[96vh] h-[100vh] top-0 sm:top-4 bg-black rounded-tr-xl rounded-br-xl sm:rounded-xl p-3 duration-300",
+					"sm:sticky left-0 fixed sm:max-w-[6em] lg:max-w-[15em] sm:h-[96vh] h-[100vh] top-0 sm:top-4 bg-black rounded-tr-xl rounded-br-xl sm:rounded-xl p-3 duration-300 z-50",
 				)}>
 				<div className="my-2 pb-4 flex gap-1 items-center text-white relative">
 					<FileBarChart2 />

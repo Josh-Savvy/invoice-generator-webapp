@@ -12,14 +12,14 @@ const EditInvoicePage = ({ params: { invoiceId, ...params } }: Params) => {
 	if (!required.includes(params.type)) redirect("/invoices");
 
 	return (
-		<div className="min-h-[300vh] w-full lg:pr-5">
-			<MainNav ctaComponent={<EditInvoiceCta {...{ invoiceId: parseInt(invoiceId) }} />} />
-			<div className="grid grid-cols-12 gap-5 w-full mt-4">
-				<div className="col-span-8 w-full">
-					{params.type === "new" ? <CreateInvoiceForm /> : <EditInvoiceForm />}
-				</div>
-				<div className="bg-white col-span-4 min-h-24 w-full rounded-xl p-4"></div>
-			</div>
+		<div className="min-h-[300vh] w-full h-full sm:pr-3">
+			<MainNav
+				ctaComponent={
+					params.type === "edit" ? <EditInvoiceCta {...{ invoiceId: parseInt(invoiceId) }} /> : <></>
+				}
+			/>
+			<br />
+			{params.type === "new" ? <CreateInvoiceForm /> : <EditInvoiceForm />}
 		</div>
 	);
 };

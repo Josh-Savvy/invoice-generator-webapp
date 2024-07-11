@@ -42,26 +42,31 @@ const EditInvoiceForm = ({ className }: Props) => {
 	if (!invoiceId || !invoice) router.replace("/invoices");
 
 	return (
-		<div className={clsx("rounded-xl bg-white p-5", className)}>
-			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-					<FormField
-						control={form.control}
-						name="username"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Username</FormLabel>
-								<FormControl>
-									<Input placeholder="shadcn" {...field} />
-								</FormControl>
-								<FormDescription>This is your public display name.</FormDescription>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<Button type="submit">Submit</Button>
-				</form>
-			</Form>
+		<div className="grid lg:grid-cols-12 gap-5 w-full mt-4">
+			<div className="col-span-8 w-full">
+				<div className={clsx("rounded-xl bg-white p-5", className)}>
+					<Form {...form}>
+						<form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+							<FormField
+								control={form.control}
+								name="username"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Username</FormLabel>
+										<FormControl>
+											<Input placeholder="shadcn" {...field} />
+										</FormControl>
+										<FormDescription>This is your public display name.</FormDescription>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<Button type="submit">Submit</Button>
+						</form>
+					</Form>
+				</div>
+			</div>
+			<div className="bg-white col-span-4 min-h-24 w-full rounded-xl p-4"></div>
 		</div>
 	);
 };
