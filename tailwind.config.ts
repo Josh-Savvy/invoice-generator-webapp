@@ -11,6 +11,7 @@ const config = {
 			screens: { "2xl": "1400px" },
 		},
 		extend: {
+			fontSize: { xs: "0.65em" },
 			screens: { xs: "456px" },
 			colors: {
 				border: "hsl(var(--border))",

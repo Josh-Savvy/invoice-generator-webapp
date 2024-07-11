@@ -46,7 +46,7 @@ const EditInvoiceCta = ({ invoiceId }: { invoiceId: number }) => {
 							{isDraft ? "Remove from" : "Save to"} drafts
 						</Button>
 						<DropdownMenuSeparator />
-						<Button variant={"outline"} className="tracking-tight w-full text-sm bg-_primary text-white">
+						<Button variant={"outline"} className="tracking-tight w-full text-sm bg-_primary text-white !border-none">
 							Download
 						</Button>
 					</DropdownMenuContent>
@@ -68,7 +68,7 @@ const EditInvoiceCta = ({ invoiceId }: { invoiceId: number }) => {
 					onClick={() => (invoice ? addToDraft(invoice) : {})}>
 					{isDraft ? "Remove from" : "Save to"} drafts
 				</Button>
-				<Button variant={"outline"} className="tracking-tight rounded-xl text-sm bg-_primary text-white">
+				<Button variant={"outline"} className="tracking-tight rounded-xl text-sm bg-_primary text-white !border-none">
 					Download
 				</Button>
 			</div>

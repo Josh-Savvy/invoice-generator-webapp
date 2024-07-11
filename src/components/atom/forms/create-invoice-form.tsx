@@ -56,7 +56,7 @@ const CreateInvoiceForm = ({ className }: Props) => {
 					</Form>
 				</div>
 			</div>
-			<div className="bg-white col-span-4 min-h-24 w-full rounded-xl p-4"></div>
+				<div className="bg-white col-span-4 min-h-24 w-full rounded-xl p-4"></div>
 		</div>
 	);
 };

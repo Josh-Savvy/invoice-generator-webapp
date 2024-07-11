@@ -19,6 +19,27 @@ export interface Invoice {
 	updated_at: Date;
 }
 
+export interface Currency {
+	iso: string;
+	name: string;
+	symbol: string;
+}
+
+export interface PaymentMethod {
+	bank: string;
+	account_name: string;
+	account_number: string;
+}
+
+export interface InvoiceItem {
+	name: string;
+	description: string;
+	price: number;
+	currency: Currency;
+	quantity: number;
+	rate: number;
+}
+
 export interface Client {
 	email: string;
 	avatar: string;
@@ -27,22 +48,23 @@ export interface Client {
 	first_name: string;
 	phone_number: string;
 }
-
-export interface Currency {
-	iso: string;
-	name: string;
-	symbol: string;
-}
-
-export interface InvoiceItem {
-	name: string;
-	rate: number;
-	quantity: number;
+export interface CreateInvoice {
 	description: string;
-}
-
-export interface PaymentMethod {
-	bank: string;
-	account_name: string;
-	account_number: string;
+	issue_date: string; // DD-MM-YYYY
+	due_date: string; // DD-MM-YYYY
+	currency: string; // currency iso
+	billing_to?: string; // optional
+	notes?: string; // optional
+	client: {
+		first_name: string;
+		last_name: string;
+		email: string;
+		phone_number: string;
+	};
+	items: Omit<InvoiceItem, "price" | "currency">[];
+	payment_method: {
+		account_number: string;
+		account_name: string;
+		bank: string;
+	};
 }
