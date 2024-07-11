@@ -1,9 +1,14 @@
-import React from 'react'
+import AllInvoicesTemplate from "@/components/atom/templates/all-invoices";
+import React from "react";
+
+export const metadata = { title: "All Invoices" };
 
 const AllInvoicesPage = () => {
-  return (
-    <div>AllInvoicesPage</div>
-  )
-}
+	return (
+		<>
+			<AllInvoicesTemplate />
+		</>
+	);
+};
 
-export default AllInvoicesPage
+export default AllInvoicesPage;

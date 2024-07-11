@@ -4,6 +4,8 @@ import "./globals.css";
 import clsx from "clsx";
 import Sidebar from "@/components/layout/sidebar";
 import AppProviders from "./_components/providers";
+import { Toaster } from "@/components/ui/toaster";
+import NextTopLoader from "nextjs-toploader";
 
 const font = AR_One_Sans({ subsets: ["latin"], weight: "400" });
 
@@ -17,9 +19,13 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<AppProviders>
-				<body className={clsx(font.className, "bg-_background p-2 flex items-start gap-5")}>
-					<Sidebar />
-					<section className="w-full py-3">{children}</section>
+				<body className={font.className}>
+					<NextTopLoader />
+					<Toaster />
+					<main className="bg-_background p-2 flex items-start gap-5 w-full">
+						<Sidebar />
+						<section className="w-full py-3 overflow-x-hidden">{children}</section>
+					</main>
 				</body>
 			</AppProviders>
 		</html>

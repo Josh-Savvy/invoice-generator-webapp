@@ -1,6 +1,6 @@
 "use client";
 import { useParams, usePathname } from "next/navigation";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -19,11 +19,15 @@ const NavigatorComponent = () => {
 	const params = useParams<Params>();
 	const path = useMemo(() => _path.split("/")[1] || "", [_path]);
 	const BreadCrumbIcon = useMemo(() => breadCrumbIcons[path], [path]);
+	const [canGoForward, setCanGoForward] = useState<boolean>(false);
 
-	const canGoForward = useMemo(() => {
-		if (typeof window !== "undefined") return window?.history.length >= 1;
-		return false;
-	}, [_path]);
+	useEffect(() => {
+		if (typeof window !== "undefined") setCanGoForward(window?.history.length >= 1);
+		console.log({ l: window?.history});
+		return () => {
+			if (typeof window !== "undefined") setCanGoForward(window?.history.length >= 1);
+		};
+	}, []);
 
 	return (
 		<div className="flex items-center gap-3 select-none">
