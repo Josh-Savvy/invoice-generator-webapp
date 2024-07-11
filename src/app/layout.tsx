@@ -22,9 +22,9 @@ export default function RootLayout({
 				<body className={font.className}>
 					<NextTopLoader />
 					<Toaster />
-					<main className="bg-_background p-2 flex items-start gap-5 w-full">
+					<main className="bg-_background p-2 sm:flex items-start gap-5 w-full">
 						<Sidebar />
-						<section className="w-full py-3 overflow-x-hidden">{children}</section>
+						<section className="w-full py-3 overflow-x-hidden min-h-screen">{children}</section>
 					</main>
 				</body>
 			</AppProviders>
