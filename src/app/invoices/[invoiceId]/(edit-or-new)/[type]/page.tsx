@@ -12,7 +12,7 @@ const EditInvoicePage = ({ params: { invoiceId, ...params } }: Params) => {
 	if (!required.includes(params.type)) redirect("/invoices");
 
 	return (
-		<div className="min-h-[300vh] w-full h-full sm:pr-3">
+		<div className="min-h-[100vh] w-full h-full sm:pr-3">
 			<MainNav
 				ctaComponent={
 					params.type === "edit" ? <EditInvoiceCta {...{ invoiceId: parseInt(invoiceId) }} /> : <></>

@@ -19,6 +19,9 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import UploadFileDialog from "../common/upload-file-dialog";
+import Image from "next/image";
+import type { UploadedFile } from "../common/upload-file-dialog/_components/file-uploader";
 
 type Props = { className?: string };
 
@@ -58,8 +61,12 @@ const EditInvoiceForm = ({ className }: Props) => {
 			<div className="col-span-9 xl:col-span-8 w-full">
 				<div className={clsx("rounded-xl bg-white p-5", className)}>
 					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)} className="w-full grid grid-cols-12 gap-3">
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="w-full grid grid-cols-12 gap-3 items-start">
 							<div className="col-span-6 grid gap-3">
+								{/* // Todo: company name should be here */}
+								<div className="">{}</div>
 								<div className="">
 									<p className="text-sm">Issue Date</p>
 									<Popover>
@@ -123,11 +130,27 @@ const EditInvoiceForm = ({ className }: Props) => {
 									</Popover>
 								</div>
 							</div>
-							<div className="col-span-6 h-40">
-								<div className="w-full h-full flex flex-col items-center justify-center rounded-xl border-_primary hover:bg-_primary/40 duration-300 bg-_primary/10 border-2 border-dotted select-none cursor-pointer">
-									<ImageIcon color="#7d4bf6" size={40} />
-									<p className="text-xs text-_primary tracking-tight">Company&apos;s logo</p>
-								</div>
+							<div className="col-span-6 h-44 w-full relative">
+								<UploadFileDialog
+									title="Company's logo"
+									onUpload={(files) => {
+										console.log({ files: files.length });
+										const file = files.length > 0 ? files[0] : null;
+										if (file) form.setValue("company_logo", file);
+									}}
+									triggerComponent={
+										form.watch().company_logo ? (
+											<Image
+												src={(form.watch().company_logo as UploadedFile).preview}
+												alt={(form.watch().company_logo as UploadedFile).name}
+												width={48}
+												height={48}
+												loading="lazy"
+												className="aspect-square w-full h-full rounded-md object-cover"
+											/>
+										) : null
+									}
+								/>
 							</div>
 							<div className="col-span-12 grid grid-cols-12 gap-2">
 								<h1 className="col-span-12 text-lg font-semibold tracking-tight">
@@ -208,6 +231,7 @@ export default EditInvoiceForm;
 
 const defaultValues = {
 	billing_to: "",
+	company_logo: null,
 	client: {
 		avatar: "",
 		email: "",

@@ -1,7 +1,7 @@
 "use client";
 import { useInvoiceContext } from "@/contexts/invoice.context";
 import React from "react";
-import InvoiceListCard from "../cards/invoice-list-card";
+import InvoiceListCard from "../atom/cards/invoice-list-card";
 
 const AllInvoicesTemplate = () => {
 	const { invoices } = useInvoiceContext();

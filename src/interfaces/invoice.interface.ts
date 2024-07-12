@@ -1,3 +1,5 @@
+import { UploadedFile } from "@/components/atom/common/upload-file-dialog/_components/file-uploader";
+
 export interface Invoice {
 	id: number;
 	reference: string;
@@ -49,6 +51,7 @@ export interface Client {
 	phone_number: string;
 }
 export interface CreateInvoice {
+	company_logo: UploadedFile | null;
 	description: string;
 	issue_date: string; // DD-MM-YYYY
 	due_date: string; // DD-MM-YYYY

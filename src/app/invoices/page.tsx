@@ -1,4 +1,4 @@
-import AllInvoicesTemplate from "@/components/atom/templates/all-invoices";
+import AllInvoicesTemplate from "@/components/templates/all-invoices";
 import React from "react";
 
 export const metadata = { title: "All Invoices" };
